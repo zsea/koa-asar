@@ -1,4 +1,4 @@
-[简体中文](https://github.com/zsea/koa-asar/blob/main/README.ZH.CN.MD)
+[简体中文](https://github.com/zsea/koa-asar/blob/master/README.ZH.CN.MD)
 
 Using ASAR Files for Static Assets in Koa Middleware
 

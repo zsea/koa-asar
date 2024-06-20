@@ -1,4 +1,4 @@
-[英文](https://github.com/zsea/koa-asar/blob/main/README.MD)
+[英文](https://github.com/zsea/koa-asar/blob/master/README.MD)
 
 使用asar文件做为静态资源的Koa中间件。
 
