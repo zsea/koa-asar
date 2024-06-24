@@ -37,7 +37,7 @@ function Asar(archive, options) {
             }
             let fileinfo = undefined;
             try {
-                fileinfo = filesystem.getFile(filename);
+                fileinfo = filesystem.getFile(path.normalize(filename));
                 if (fileinfo["files"]) {
                     fileinfo = undefined;
                 }
@@ -53,7 +53,7 @@ function Asar(archive, options) {
                     filename = filename + options.index;
                 }
                 try {
-                    fileinfo = filesystem.getFile(filename);
+                    fileinfo = filesystem.getFile(path.normalize(filename));
                     if (fileinfo["files"]) {
                         fileinfo = undefined;
                     }
@@ -65,7 +65,7 @@ function Asar(archive, options) {
             if (!fileinfo && options.default) {
                 try {
                     filename = options.default;
-                    fileinfo = filesystem.getFile(filename);
+                    fileinfo = filesystem.getFile(path.normalize(filename));
                     if (fileinfo["files"]) {
                         fileinfo = undefined;
                     }
@@ -79,7 +79,7 @@ function Asar(archive, options) {
                 ctx.status = 404;
                 return;
             }
-            const content = disk.readFileSync(filesystem, filename, filesystem.getFile(filename));
+            const content = disk.readFileSync(filesystem, path.normalize(filename), filesystem.getFile(path.normalize(filename)));
             ctx.body = content;
             const ext = path.extname(filename);
             ctx.type = ext;
