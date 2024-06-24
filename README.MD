@@ -29,6 +29,7 @@ console.log("listening on port 3000");
 * index - The default document name.
 * maxage - Cache duration. Unit: seconds.
 * maxAge - Same as maxage.
+* default - When the loaded file does not exist, then load the file configured for the current setting.
 
 ## Rewrite Parameter Description
 * When the parameter is a function, the signature is as follows: ```rewrite(filename): Promise<string>```.

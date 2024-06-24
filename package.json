@@ -1,6 +1,6 @@
 {
   "name": "koa-asar",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Using ASAR Files for Static Assets in Koa Middleware",
   "homepage": "https://github.com/zsea/koa-asar",
   "main": "index.js",

@@ -31,6 +31,7 @@ console.log("listening on port 3000");
     * **index** - 默认文档名称。
     * **maxage** - 缓存时间。单位：秒。
     * **maxAge** - 同```maxage```。
+    * **default** - 当加载的文件不存在时，则加载当前配置的文件。
 
 ## rewrite参数说明
 

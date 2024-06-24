@@ -62,7 +62,18 @@ function Asar(archive, options) {
 
                 }
             }
+            if (!fileinfo && options.default) {
+                try {
+                    filename = options.default;
+                    fileinfo = filesystem.getFile(filename);
+                    if (fileinfo["files"]) {
+                        fileinfo = undefined;
+                    }
+                }
+                catch (e) {
 
+                }
+            }
             if (!fileinfo) {
                 ctx.body = "Not Found";
                 ctx.status = 404;
