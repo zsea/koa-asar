@@ -79,13 +79,23 @@ function Asar(archive, options) {
                 ctx.status = 404;
                 return;
             }
-            const content = disk.readFileSync(filesystem, path.normalize(filename), filesystem.getFile(path.normalize(filename)));
-            ctx.body = content;
-            const ext = path.extname(filename);
-            ctx.type = ext;
-            const maxAge = options.maxage || options.maxAge;
-            if (maxAge) {
-                ctx.set('Cache-Control', [`max-age=${maxAge}`].join(","));
+            const inm = ctx.request.headers["if-none-match"];
+            if (fileinfo.integrity && fileinfo.integrity.hash && inm === fileinfo.integrity.hash) {
+                ctx.status = 304;
+            }
+            else {
+                const content = disk.readFileSync(filesystem, path.normalize(filename), fileinfo);
+                ctx.body = content;
+                const ext = path.extname(filename);
+                ctx.type = ext;
+                const maxAge = options.maxage || options.maxAge;
+                if (maxAge) {
+                    ctx.set('Cache-Control', [`max-age=${maxAge}`].join(","));
+                }
+                if (fileinfo.integrity && fileinfo.integrity.hash) {
+                    ctx.set('etag', fileinfo.integrity.hash);
+                }
+
             }
         }
         next();
